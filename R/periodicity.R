@@ -32,7 +32,9 @@ time.frequency <- function(x) {
 }
 
 periodicity <- function(x, ...) {
-  if( timeBased(x) || !is.xts(x) )
+  # i'm not quite sure but i think this if statement is wrong 
+  #orig: if( timeBased(x) || !is.xts(x) )
+  if( !timeBased(x) && !is.xts(x) )
     x <- try.xts(x, error='\'x\' needs to be timeBased or xtsible')
 
   n <- length(.index(x))
